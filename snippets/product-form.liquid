@@ -1,0 +1,127 @@
+
+  {% form 'product', product, data-product-form:product_form_config %}
+    {% if section.settings.show_vendor %}
+      <h3>{{ 'products.product.designer' | t }}: {{ product.vendor }}</h3>
+      <div class="clear"></div>
+    {% endif %}
+
+    {%- if settings.show_multiple_currencies -%}
+      {% assign price = current_variant.price | money_with_currency %}
+      {% assign compare_price = current_variant.compare_at_price | money_with_currency %}
+    {%- else -%}
+      {% assign price = current_variant.price | money %}
+      {% assign compare_price = current_variant.compare_at_price | money %}
+    {%- endif -%}
+    {%- if current_variant.compare_at_price > current_variant.price -%}
+      {% assign onsale = true %}
+    {%- endif -%}
+    <div id="product-price">
+      <span class="product-price" itemprop="price">
+        <span class="{% if onsale %}onsale{% endif %} money">{{ price }}</span>
+      </span>
+      {% if onsale %}
+        <span class="was">
+          <span class="money">{{ compare_price }}</span>
+        </span>
+      {% else %}
+        <span class="was"></span>
+      {% endif %}
+    </div><div class="clear"></div>
+
+    {% if product.options.size > 1 %}
+     <div class="select" {% if product.variants.size == 1 or section.settings.product_variants == 'swatches' %}style="display: none;"{% endif %}>
+       <select id="product-select-{{ product.id }}" name='id'>
+         {% for variant in product.variants %}
+           <option value="{{ variant.id }}" {% if variant == current_variant %}selected="selected"{% endif %}>
+             {{ variant.title }} - {{ variant.price | money }}
+           </option>
+         {% endfor %}
+       </select>
+     </div>
+      {% if section.settings.product_variants == 'swatches' %}
+        {% for option in product.options_with_values %}
+          {% include "swatch" %}
+        {% endfor %}
+      {% endif %}
+    {% elsif product.options.size == 1 and product.variants.size > 1 %}
+    <div class="select" {% if product.variants.size == 1 or section.settings.product_variants == 'swatches' %}style="display: none;"{% endif %}>
+       <label>{{ product.options[0] }}</label>
+       <select id="product-select-{{ product.id }}" name='id'>
+         {% for variant in product.variants %}
+           <option data-sku="{{ variant.sku }}" value="{{ variant.id }}" {% if variant == current_variant %}selected="selected"{% endif %}>
+             {{ variant.title }} - {{ variant.price | money }}
+           </option>
+         {% endfor %}
+       </select>
+     </div>
+     {% if section.settings.product_variants == 'swatches' %}
+       {% for option in product.options_with_values %}
+         {% include "swatch" %}
+       {% endfor %}
+     {% endif %}
+    {% else %}
+     <div class="what-is-it">
+       {% if product.options.first != 'Title' %}
+         <label>{{ product.options.first }}:</label>
+         {% for variant in product.variants %}
+           <span class="it-is">{{ variant.option1 | escape }}</span>
+         {% endfor %}
+       {% endif %}
+     </div>
+     <div class="product-variants"></div><!-- product variants -->
+     <input  type="hidden" id="{{ variant.id }}" name="id" data-sku="{{ variant.sku }}" value="{{ product.variants[0].id }}" />
+    {% endif %}
+
+    {% if section.settings.show_sku %}
+      <div class="sku">
+        <label style="display: inline-block; line-height: 1.6em;">{{ 'customer.order.details.sku' | t }}:</label> <span class="variant_sku">{{ current_variant.sku }}</span>
+      </div><div class="clear"></div>
+    {% endif %}
+
+    {% if current_variant.inventory_quantity > 1 and section.settings.show_quantity_selector %}
+     <div class="product-qty selector-wrapper">
+        <h5>{{ 'products.product.quantity' | t }}</h5>
+        <a class="downer quantity-control-down">-</a>
+        <input min="1" type="text" name="quantity" class="product-quantity" value="1" {% unless current_variant.inventory_management == blank or current_variant.inventory_policy == 'continue' %} max="{{ current_variant.inventory_quantity }}" {% endunless %} />
+        <a class="up quantity-control-up">+</a>
+     </div>
+     <div class="clear"></div>
+   {% endif %}
+
+    {% if current_variant.available %}
+      <div class="product-add">
+        <input id="AddToCart" type="submit" name="button" class="add{% if section.settings.show_payment_button %} secondary-button{% endif %}" value="{{ 'products.product.add_to_cart' | t }}" />
+      </div>
+    {% else %}
+      <div class="product-add">
+        <input id="AddToCart" type="submit" name="button" class="add{% if section.settings.show_payment_button %} secondary-button{% endif %}" value="{{ 'products.product.sold_out' | t }}" />
+      </div>
+    {% endif %}
+
+	
+    {% if section.settings.show_payment_button %}
+    {{ form | payment_button }}
+    {% endif %}
+
+	<div class="klarna-placement-wrapper">
+      <!-- Placement v1 -->
+      <klarna-placement
+        data-id="1178caac-d2bd-496c-83c2-312d437d0ddb" 
+        data-theme="default"
+        data-width="400px"
+      ></klarna-placement>
+      <!-- end Placement -->
+	</div>
+
+    {% if section.settings.back_in_stock %}
+    <div class="back_in_stock"{% if current_variant.available %} style="display: none"{% endif %}>
+        {{ section.settings.back_in_stock_text }}
+        {%- assign vnt = variant.title -%}
+    </div>
+    {% endif %}
+
+{% endform %}
+
+{% if section.settings.back_in_stock %}
+{% include 'back-in-stock-form' %}
+{% endif %}

@@ -1,0 +1,113 @@
+<div data-section-id="{{ section.id }}">
+
+  {% assign number = section.settings.products_per_page %}
+  {% paginate collection.products by number %}
+
+  <div class="section-title desktop-12 mobile-3">
+    <h1 id="bc-sf-filter-collection-header">{% if collection.handle == 'all' %}{{ 'collections.general.all_products' | t }}{% else %}{{ collection.title }}{% endif %}</h1>
+  </div>
+
+  <div class="desktop-2 tablet-6 mobile-3" id="aside">
+    <div id="sidebar">
+      {% if collection.image %}
+      <div class="col-image">{{ collection.image.src | collection_img_url: 'compact' | img_tag: collection_title }}</div>
+      {% endif %}
+
+      {% if template contains 'collection' %}
+      <label>{{ 'collections.sorting.title' | t }}</label>
+      <div id="bc-sf-filter-top-sorting">
+        {% include 'bc-sf-filter-skeleton', width: 3 %}
+      </div>
+      {% endif %}
+
+      <div id="bc-sf-filter-tree2">
+        {% comment %} Include placeholder template {% endcomment %}
+        {% include 'bc-sf-filter-tree-placeholder' %}
+      </div>
+    </div>
+  </div>
+
+  <div class="desktop-10 tablet-6 mobile-3" id="bside">
+
+    {% if collection.description != blank %}
+    <div id="collection-description">
+      <div id="bc-sf-filter-collection-description" class="rte">{{ collection.description | remove: "[banner]" }}</div>
+    </div>
+    {% endif %}
+
+    <div id="bc-sf-filter-tree-mobile">{% include 'bc-sf-filter-skeleton', type: 'button' %}</div>
+    <div id="bc-sf-filter-tree">
+      {% comment %} Include placeholder template {% endcomment %}
+      {% include 'bc-sf-filter-tree-placeholder' %}
+    </div>
+
+    <div class="clear"></div>
+
+    <div id="product-loop" data-bc-sort="{{ collection.default_sort_by }}">
+      {% for product in collection.products %}
+        <div class="product {% if section.settings.products_per_row  == 3 or section.settings.products_per_row  == '3' %}desktop-4{% cycle ' first', '', ' last' %}{% elsif section.settings.products_per_row == 4 or section.settings.products_per_row  == '4' %}desktop-3{% cycle ' first', '', '', ' last' %}{% endif %} tablet-half mobile-half" id="prod-{{ product.id }}" data-alpha="{{ product.title }}" data-price="{{ product.price }}">
+          {% include 'product-listing' %}
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+
+  <div class="clear"></div>
+
+  <div id="bc-sf-filter-bottom-pagination">
+    {% include 'bc-sf-filter-skeleton', width: 4 %}
+  </div>
+  <div id="bc-sf-filter-load-more"></div>
+
+  {% endpaginate %}
+
+</div>
+
+{% if section.settings.sticky-sidebar %}
+<script>
+
+  if($(window).width() > 980){
+
+    $('#sidebar').stickySidebar({
+
+      sidebarTopMargin: 100,
+      footerThreshold: 100
+
+    });
+  };
+</script>
+{% endif %}
+
+<script>
+  // Declare bcSfFilterConfig variable
+  var bcSfFilterConfig = {
+    label: {
+      sorting: {% assign temp = 'collections.sorting.title' | t  %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Sorting" {% endunless %},
+      sorting_best_selling: {% assign temp = 'collections.sorting.best_selling' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Best Selling" {% endunless %},
+      sorting_featured: {% assign temp = 'collections.sorting.featured' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Featured" {% endunless %},
+      sorting_title_ascending: {% assign temp = 'collections.sorting.az' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Alphabetically, A-Z" {% endunless %},
+      sorting_title_descending: {% assign temp = 'collections.sorting.za' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Alphabetically, Z-A" {% endunless %},
+      sorting_price_ascending: {% assign temp = 'collections.sorting.price_ascending' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Lowest Price" {% endunless %},
+      sorting_price_descending: {% assign temp = 'collections.sorting.price_descending' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Highest Price" {% endunless %},
+      sorting_date_ascending: {% assign temp = 'collections.sorting.date_ascending' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Date, Old to New" {% endunless %},
+      sorting_date_descending: {% assign temp = 'collections.sorting.date_descending' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Date, New to Old" {% endunless %},
+      sorting_sale_descending: {% assign temp = 'collections.sorting.sale_descending' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "% Off" {% endunless %},
+      sorting_relevance: {% assign temp = 'collections.sorting.relevance' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Relevance" {% endunless %},
+
+      sale: {{ 'products.general.sale' | t | json }},
+      sold_out: {{ 'products.general.sold' | t | json }},
+      new: {{ 'products.general.new' | t | json }},
+      quick_view: {{ 'products.general.quick_view' | t | json }},
+      from_price: {{ 'products.general.from' | t | json }},
+      showing_items: {{ 'general.pagination.showing_items' | t | json }},
+    },
+    custom: {
+      products_per_page: {% if section.settings.products_per_page %} {{ section.settings.products_per_page | json }} {% else %} 24 {% endif %},
+      products_per_row: {% if section.settings.products_per_row %} {{ section.settings.products_per_row }} {% else %} 4 {% endif %},
+      vendor_enable: {% if settings.vendor != nil %} {{ settings.vendor | json }} {% else %} false {% endif %},
+      quick_view_enable: {% if settings.quickview != nil %} {{ settings.quickview | json }} {% else %} false {% endif %},
+      image_flip_enable: {% if settings.image_flip %} {{ settings.image_flip | json }} {% elsif settings.image-flip %} {{ settings.image-flip | json }} {% else %} false {% endif %},
+    },
+  };
+</script>

@@ -1,0 +1,182 @@
+{% assign meganav = false %}
+{% assign submenu_with_image = false %}
+{% for block in section.blocks %}
+
+  {% if block.type == 'submenu_with_image' %}
+    {% if block.settings.menu_item == link.title %}
+      {% capture imagemenu %}
+        <li class="dropdown has_sub_menu" aria-haspopup="true" aria-expanded="false">
+          <a href="{{ link.url }}" class="dlinks top_level">
+            {{ link.title }}
+          </a>
+          <ul class="image_menu submenu">
+            {% if block.settings.nav_image != blank %}
+              {% capture navimage %}
+              {%- assign image_size = '300x' -%}
+              <span class="nav_image submenu_column">
+                <a href="{{ block.settings.link }}">
+                  {% include 'basic-responsive-image' | type: block.settings.nav_image %}
+                  <noscript>
+                    <img src="{{ block.settings.nav_image | img_url: '300x' }}" class="navigation-image">
+                  </noscript>
+                </a>
+              </span>
+              {% endcapture %}
+            {% endif %}
+            {% if block.settings.nav_image_position == 'left' %}
+              {{ navimage }}
+            {% endif %}
+            <span class="nav_menu submenu_column">
+              {% for sub_link in link.links %}
+                {% if sub_link.links != blank %}
+                <li class="nest has_sub_menu" aria-haspopup="true" aria-expanded="false">
+                  <a href="{{ sub_link.url }}">
+                    {{ sub_link.title }}
+                  </a>
+                  <ul class="nested">
+                    {% for sub_sub_link in sub_link.links %}
+                      <li>
+                        <a href="{{ sub_sub_link.url }}">
+                          {{ sub_sub_link.title }}
+                        </a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </li>
+                {% else %}
+                  <li>
+                    <a href="{{ sub_link.url }}">
+                      {{ sub_link.title | escape }}
+                    </a>
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </span>
+            {% if block.settings.nav_image_position == 'right' %}
+              {{ navimage }}
+            {% endif %}
+          </ul>
+        </li>
+      {% endcapture %}
+      {% assign submenu_with_image = true %}
+    {% endif %}
+
+{% elsif block.type == 'mega_menu' %}
+{% if block.settings.menu_item == link.title %}
+  {% capture megalink %}
+  <li class="dropdown has_sub_menu" aria-haspopup="true" aria-expanded="false">{{ link.title | link_to: link.url }}
+    <ul class="megamenu">
+      <div class="mega-container">
+        {% if block.settings.nav_image != blank  %}
+        <span class="desktop-3 tablet-hide mm-image">
+          {%- assign image_size = '300x' -%}
+          <a href="{{ block.settings.link }}">
+            <img src="{{ block.settings.nav_image | img_url: image_size }}">
+          </a>
+        </span>
+        {% endif %}
+        <span class="{% if block.settings.nav_image != blank %}desktop-9{% else %}desktop-12{% endif %} tablet-6">
+          {% for sub_link in link.links %}
+          <li class="desktop-3 tablet-fourth">
+            <h4><a href="{{ sub_link.url }}">{{ sub_link.title }}</a></h4>
+            {% if sub_link.links != blank %}
+            <ul class="mega-stack">
+              {% for sub_sub_link in sub_link.links %}
+              <li><a href="{{ sub_sub_link.url }}">{{ sub_sub_link.title }}</a></li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </li>
+          {% endfor %}
+        </span>
+      </div>
+    </ul>
+  </li>
+  {% endcapture %}
+{% assign meganav = true %}
+{% endif %}
+{% endif %}
+{% endfor %}
+{% if submenu_with_image %}
+{{ imagemenu }}
+{% elsif meganav %}
+{{ megalink }}
+{% elsif link.links != blank %}
+<li class="dropdown has_sub_menu" aria-haspopup="true" aria-expanded="false">
+  <a href="{{ link.url }}" class="dlinks top_level">
+    {{ link.title }}
+  </a>
+  {% if link.type == 'collection_link' and section.settings.product_menu %}
+    {% assign collection = link.object %}
+    <ul class="megamenu">
+      <div class="mega-container">
+        <!-- Start Megamenu Inner Links -->
+        <li class="desktop-3 tablet-1">
+          <h4>{{ link.title }}</h4>
+          <ul class="mega-stack">
+            {% for sub_link in link.links %}
+              {% if sub_link.links != blank %}
+                <li class="nest has_sub_menu" aria-haspopup="true" aria-expanded="false">
+                  <a href="{{ sub_link.url }}">
+                    {{ sub_link.title }}
+                  </a>
+                  <ul class="nested">
+                    {% for sub_sub_link in sub_link.links %}
+                      <li>
+                        <a href="{{ sub_sub_link.url }}">
+                          {{ sub_sub_link.title }}
+                        </a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </li>
+              {% else %}
+                <li>
+                  <a href="{{ sub_link.url }}">
+                    {{ sub_link.title }}
+                  </a>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </li>
+
+        {% for product in collection.products limit: 4 %}
+          <li class="desktop-2 product">
+            {% include 'product-listing' %}
+          </li>
+        {% endfor %}
+      </div>
+    </ul>
+  {% else %}
+    <ul class="submenu">
+      {% for sub_link in link.links %}
+        {% if sub_link.links != blank %}
+          <li class="nest has_sub_menu" aria-haspopup="true" aria-expanded="false">
+            <a href="{{ sub_link.url }}">
+              {{ sub_link.title }}
+            </a>
+            <ul class="nested">
+              {% for sub_sub_link in sub_link.links %}
+                <li>
+                  <a href="{{ sub_sub_link.url }}">
+                    {{ sub_sub_link.title }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </li>
+        {% else %}
+          <li>
+            <a href="{{ sub_link.url }}">
+              {{ sub_link.title }}
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+</li>
+{% else %}
+<li><a class="top_level" href="{{ link.url }}">{{ link.title }}</a></li>
+{% endif %}

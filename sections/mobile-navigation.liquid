@@ -1,0 +1,172 @@
+<nav class="shifter-navigation no-fouc" data-section-id="{{ section.id }}" data-section-type="mobile-navigation">
+  {% if section.settings.search %}
+  <div class="search">
+    <form role="search" action="/search" method="get">
+      <input type="hidden" name="type" value="product">
+      <input type="text" name="q" id="q" placeholder="{{ 'general.search.placeholder' | t }}" />
+    </form>
+  </div>
+  {% endif %}
+  <ul id="accordion" role="navigation">
+    {% for link in linklists[section.settings.main_nav].links %}
+      {% if link.links != blank %}
+        <li class="accordion-toggle" aria-haspopup="true" aria-expanded="false">
+          <a href="{{ link.url }}">
+            {{ link.title | escape }}
+          </a>
+        </li>
+
+        <div class="accordion-content">
+          <ul class="sub">
+            {% for sub_link in link.links %}
+              {% if sub_link.links != blank %}
+                <div class="accordion-toggle2" aria-haspopup="true" aria-expanded="false">
+                  <a href="{{ sub_link.url }}">
+                    {{ sub_link.title | escape }}
+                  </a>
+                </div>
+                <div class="accordion-content2">
+                  <ul class="sub">
+                    {% for sub_sub_link in sub_link.links %}
+                      <li>
+                        <a href="{{ sub_sub_link.url }}">
+                          {{ sub_sub_link.title }}
+                        </a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% else %}
+                <li>
+                  <a href="{{ sub_link.url }}">
+                    {{ sub_link.title | escape }}
+                  </a>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+      {% else %}
+        <li>
+          <a href="{{ link.url }}">
+            {{ link.title | escape }}
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+      {% if shop.customer_accounts_enabled %}
+        {% if customer  %}
+        <li>
+          <a href="/account">
+            {{ 'customer.account.title' | t }}
+          </a>
+        </li>
+        <li>
+          <a href="/account/logout" class="logout-link">
+           {{ 'customer.account.logout' | t }}
+          </a>
+        </li>
+        {% else %}
+        <li>
+          <a href="/account/login">
+            {{ 'customer.account.signup' | t }}
+          </a>
+        </li>
+        {% endif %}
+      {% endif %}
+  </ul>
+  {% include 'social-icons' %}
+</nav>
+
+<style>
+  .shifter-enabled nav.shifter-navigation {
+      background: {{ section.settings.background }};
+      color: {{ section.settings.color }};
+  }
+  nav.shifter-navigation ul li a,
+  nav.shifter-navigation .accordion-toggle,
+  nav.shifter-navigation .accordion-toggle2,
+  nav.shifter-navigation .accordion-toggle2 a {
+    color: {{ section.settings.color }};
+  }
+  ul#accordion li,
+  .accordion-toggle2 {
+    border-bottom: 1px solid {{ section.settings.border_color }};
+  }
+  {% if section.settings.social_icons %}
+    nav.shifter-navigation ul#social-icons li {
+      background: {{ section.settings.icon_background }};
+    }
+    nav.shifter-navigation ul#social-icons li a {
+      color: {{ section.settings.icon_color }};
+    }
+  {% endif %}
+</style>
+
+{% schema %}
+  {
+    "name": "Mobile navigation",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Navigation"
+      },
+      {
+        "type": "link_list",
+        "id": "main_nav",
+        "label": "Choose main menu",
+        "default":"main-menu"
+      },
+      {
+        "type":"checkbox",
+        "id":"search",
+        "label": "Show search",
+        "default": true
+      },
+      {
+         "type": "header",
+         "content": "Style"
+      },
+      {
+        "type": "color",
+        "id": "color",
+        "label": "Text color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "background",
+        "label": "Background",
+        "default": "#1e1e1e"
+      },
+      {
+        "type": "color",
+        "id": "border_color",
+        "label": "Borders",
+        "default": "#3e3e3e"
+      },
+      {
+        "type":"header",
+        "content":"Social icons"
+      },
+      {
+        "type":"checkbox",
+        "id":"social_icons",
+        "label": "Show social icons",
+        "default": true
+      },
+      {
+        "type": "color",
+        "id": "icon_color",
+        "label": "Icon color",
+        "default": "#1e1e1e"
+      },
+      {
+        "type": "color",
+        "id": "icon_background",
+        "label": "Icon background",
+        "default": "#f8f8f8"
+      }
+	  ]
+  }
+{% endschema %}

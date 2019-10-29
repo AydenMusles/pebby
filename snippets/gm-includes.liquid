@@ -1,0 +1,37 @@
+{%- comment -%}
+  ATENCION!
+
+  Recuerda que en este archivo es donde se enlazan los archivos de estilo y script. En la parte inferior hay secciones predefinidas, pero puedes crear tus propias secciones si lo necesitas.
+
+  Las secciones predefinidas son:
+   *Global
+   *Homapage
+   *Collections
+   *Product
+   *Cart
+   *Footer
+
+   Los estilos y scripts se cargan progresivamente, osea que solo se carga lo necesario para la seccion que se esta mostrando.
+
+   En la seccion Global, se enlazan archivos que se ocuparan en todo el sitio y no en una seccion en especifico estos se deben cargar si o si para que funcione. Un ejemplo de como se enlazan los estilos y los scripts para una seccion en especifico, lo puedes ver en la seccion HOMEPAGE.
+
+   Dudas, aclaraciones... con @soycamis :D
+{%- endcomment -%}
+{%- comment -%}
+//==========================================================================\\
+COLLECTIONS
+\\==========================================================================//
+{%- endcomment -%}
+{% if template == 'collection' %}
+  <link rel="stylesheet" href="{{ 'gm.collection.css' | asset_url }}">
+{% endif %}
+
+{%- comment -%}
+//==========================================================================\\
+PRODUCT
+\\==========================================================================//
+{%- endcomment -%}
+{% if template == 'product' %}
+  <link rel="stylesheet" href="{{ 'gm.product.css' | asset_url }}">
+{% endif %}
+

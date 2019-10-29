@@ -1,0 +1,207 @@
+<div class="blog-template" data-section-id="{{ section.id }}">
+
+  {% if section.settings.image != blank %}
+    <div class="collection-banner">
+      {%- include 'basic-responsive-image', type: section.settings.image -%}
+      <noscript>
+        <img src="{{ section.settings.image | img_url: '1024x' }}" alt="{{ section.settings.image.alt }}">
+      </noscript>
+    </div>
+  {% endif %}
+
+  <div id="content" class="row">
+    {% include 'breadcrumb' %}
+    <div class="section-title desktop-12 mobile-3">
+      <h1>
+        {% if current_tags %}
+          {{ blog.title | link_to: blog.url }} &raquo; {{ current_tags.first }}
+        {% else %}
+          {{ blog.title }}
+        {% endif %}
+        <a class="fr" target="_blank" href="{{ shop.url }}/blogs/{{ blog.handle }}.atom">
+          <i class="la la-rss la-2x" aria-hidden="true"></i>
+        </a>
+      </h1>
+    </div>
+    <div class="clear"></div>
+    {% if section.settings.text != blank %}
+      <div id="blog-description" class="desktop-12 tablet-6 mobile-3" style="text-align: {{ section.settings.text_align }}">
+        <div class="rte">
+          {{ section.settings.text }}
+        </div>
+      </div>
+      <div class="clear"></div>
+    {% endif %}
+
+    <section class="blog-promos">
+      <div class="row">
+      {% for block in section.blocks %}
+       {%- case block.type -%}
+         {%- when 'promo_image' -%}
+            {% if block.settings.promo_image != blank %}
+              <a class="promo desktop-4 tablet-2 mobile-3 block-{{ block.id }}" href="{{ block.settings.promo_link }}">
+                <div class="promo-inner lazyload lazyload-fade"
+                data-bgset="{% include 'bgset', image: block.settings.promo_image %}"
+                data-sizes="auto">
+                  <noscript>
+                    <img src="{{ block.settings.promo_image | img_url: '800x' }}" alt="{{ block.settings.promo_image.alt }}">
+                  </noscript>
+                  <div class="promo-caption section-heading">
+                    <h2>{{ block.settings.promo_text }}</h2>
+                  </div>
+                </div>
+              </a>
+            {% else %}
+              <a class="promo desktop-4 tablet-2 mobile-3 block-{{ block.id }}" href="{{ block.settings.promo_link }}">
+                <div class="promo-inner" style="background-color: #eee;">
+                  <div class="promo-caption section-heading">
+                    <h2>{{ block.settings.promo_text }}</h2>
+                  </div>
+                </div>
+              </a>
+            {% endif %}
+         {%- when 'banner_image' -%}
+           {% if block.settings.banner_image != blank %}
+             <a class="blog-banner block-{{ block.id }} desktop-12 tablet-6 mobile-3" href="{{ block.settings.banner_link }}">
+               {%- include 'basic-responsive-image', type: block.settings.banner_image -%}
+               <noscript>
+                 <img src="{{ block.settings.banner_image | img_url: '1024x' }}" alt="{{ block.settings.banner_image.alt }}">
+               </noscript>
+             </a>
+           {% endif %}
+       {%- endcase -%}
+      {% endfor %}
+      </div>
+    </section>
+    <div class="clear"></div>
+    {% paginate blog.articles by 10 %}
+    <div id="blog-articles">
+      {% for article in blog.articles  %}
+        {% include 'article-loop' %}
+      {% endfor %}
+    </div>
+
+    <div class="clear"></div>
+
+    {% include 'pagination' %}
+
+    {% endpaginate %}
+
+  </div>
+  <style media="screen">
+    .article-body {
+      background-color: {{ section.settings.excerpt_bg_color }};
+      color: {{ section.settings.excerpt_text_color }};
+    }
+    .article-body h3,
+    .article-body a,
+    .article-body a:visited {
+      color: {{ section.settings.excerpt_text_color }} !important;
+    }
+  </style>
+</div>
+{% schema %}
+  {
+    "name": "Blog",
+    "settings": [
+      {
+        "type":"header",
+        "content": "Banner Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Banner Image"
+      },
+      {
+        "type":"header",
+        "content": "Blog description"
+      },
+      {
+        "id": "text",
+        "type": "richtext",
+        "label": "Text",
+        "default": "<p>Add some descriptive text to your all Blog.</p>"
+      },
+      {
+       "type": "select",
+       "id": "text_align",
+       "label": "Align text",
+       "options":[
+         {
+           "value":"left",
+           "label":"Left"
+         },
+         {
+           "value":"center",
+           "label":"Center"
+         }
+       ]
+      },
+      {
+        "type": "checkbox",
+        "id": "post_tags",
+        "label": "Show tags",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_author",
+        "label": "Show post author",
+        "default": true
+      },
+      {
+        "type": "color",
+        "id": "excerpt_bg_color",
+        "label": "Post excerpt BG color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "excerpt_text_color",
+        "label": "Post excerpt text color",
+        "default": "#000000"
+      }
+    ],
+    "blocks": [
+      {
+        "type":"promo_image",
+        "name":"Promo Image",
+        "settings":[
+          {
+            "type": "image_picker",
+            "id": "promo_image",
+            "label": "Image"
+          },
+          {
+            "id": "promo_text",
+            "type": "text",
+            "label": "Promo Text",
+            "default": "Text"
+          },
+          {
+            "type": "url",
+            "id": "promo_link",
+            "label": "Link"
+          }
+        ]
+      },
+      {
+        "type": "banner_image",
+        "name": "Banner Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "banner_image",
+            "label": "Image"
+          },
+          {
+            "type": "url",
+            "id": "banner_link",
+            "label": "Link"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

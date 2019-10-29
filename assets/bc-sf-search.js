@@ -1,0 +1,1 @@
+var bcSfSearchSettings={search:{}};BCSfFilter.prototype.customizeSuggestion=function(t,e,o){var i=e.outerWidth();t.outerWidth(i),jQ(".fancybox-overlay").length>0&&jQ(t).css({position:"fixed","overflow-y":"scroll",height:"100px"})};

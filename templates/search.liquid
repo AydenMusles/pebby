@@ -1,0 +1,91 @@
+{% assign products_per_row = 3 %}
+{% assign products_per_page = 24 %}
+
+<div class="section-title desktop-12 mobile-3">
+  <h1>{{ 'general.search.title' | t }}</h1>
+</div>
+
+<div id="page" class="desktop-12 tablet-6 mobile-3">
+  <div id="search-bar">
+    <form action="/search" method="get">
+      <h3 id="bc-sf-search-header"></h3>
+      <input type="text" name="q" id="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}"/>
+    </form>
+    <div class="bc-sf-search-result-number"></div>
+  </div>
+</div>
+
+<div class="desktop-2 tablet-6 mobile-3" id="aside">
+  <div id="sidebar">
+    <label>{{ 'collections.sorting.title' | t }}</label>
+    <div id="bc-sf-filter-top-sorting">
+       {% include 'bc-sf-filter-skeleton', width: 3 %}
+    </div>
+
+    <div id="bc-sf-filter-tree2">
+      {% comment %} Include placeholder template {% endcomment %}
+      {% include 'bc-sf-filter-tree-placeholder' %}
+    </div>
+  </div>
+</div>
+
+<div id="bc-sf-filter-tree-mobile">{% include 'bc-sf-filter-skeleton', type: 'button' %}</div>
+<div id="bc-sf-filter-tree">
+  {% comment %} Include placeholder template {% endcomment %}
+  {% include 'bc-sf-filter-tree-placeholder' %}
+</div>
+
+<div class="desktop-10 tablet-6 mobile-3" id="four-per-row">
+  <div id="product-loop">
+    {% comment %} Fix Shopify search term report {% endcomment %}
+    {% paginate search.results by 2 %}
+      {% if search.performed %}
+        {% for item in search.results %}
+          <div class="desktop-12" style="display: none !important"></div>
+        {% endfor %}
+      {% endif %}
+    {% endpaginate %}
+  </div>
+</div>
+
+<div class="clear"></div>
+
+<div id="bc-sf-filter-bottom-pagination">
+  {% include 'bc-sf-filter-skeleton', width: 4 %}
+</div>
+<div id="bc-sf-filter-load-more"></div>
+
+<script>
+  // Declare bcSfFilterConfig variable
+  var bcSfFilterConfig = {
+    label: {
+      sorting: {% assign temp = 'collections.sorting.title' | t  %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Sorting" {% endunless %},
+      sorting_best_selling: {% assign temp = 'collections.sorting.best_selling' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Best Selling" {% endunless %},
+      sorting_featured: {% assign temp = 'collections.sorting.featured' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Featured" {% endunless %},
+      sorting_title_ascending: {% assign temp = 'collections.sorting.az' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Alphabetically, A-Z" {% endunless %},
+      sorting_title_descending: {% assign temp = 'collections.sorting.za' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Alphabetically, Z-A" {% endunless %},
+      sorting_price_ascending: {% assign temp = 'collections.sorting.price_ascending' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Lowest Price" {% endunless %},
+      sorting_price_descending: {% assign temp = 'collections.sorting.price_descending' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Highest Price" {% endunless %},
+      sorting_date_ascending: {% assign temp = 'collections.sorting.date_ascending' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Date, Old to New" {% endunless %},
+      sorting_date_descending: {% assign temp = 'collections.sorting.date_descending' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Date, New to Old" {% endunless %},
+      sorting_sale_descending: {% assign temp = 'collections.sorting.sale_descending' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "% Off" {% endunless %},
+      sorting_relevance: {% assign temp = 'collections.sorting.relevance' | t %} {% unless temp contains 'translation missing'  %} {{ temp | json }} {% else %} "Relevance" {% endunless %},
+      search_result_header: {% assign temp = 'general.search.results_for_html' | t %} {% unless temp contains 'translation missing' %} {{ temp | json }} {% else %} 'Result' {% endunless %},
+      search_result_empty: {% assign temp = 'general.search.no_results_html' | t %} {% unless temp contains 'translation missing' %} {{ temp | json }} {% else %} 'No result' {% endunless %},
+
+      sale: {{ 'products.general.sale' | t | json }},
+      sold_out: {{ 'products.general.sold' | t | json }},
+      new: {{ 'products.general.new' | t | json }},
+      quick_view: {{ 'products.general.quick_view' | t | json }},
+      from_price: {{ 'products.general.from' | t | json }},
+      showing_items: {{ 'general.pagination.showing_items' | t | json }},
+    },
+    custom: {
+      products_per_page: {{ products_per_page }},
+      products_per_row: {{ products_per_row }},
+      vendor_enable: {% if settings.vendor != nil %} {{ settings.vendor | json }} {% else %} false {% endif %},
+      quick_view_enable: {% if settings.quickview != nil %} {{ settings.quickview | json }} {% else %} false {% endif %},
+      image_flip_enable: {% if settings.image_flip %} {{ settings.image_flip | json }} {% elsif settings.image-flip %} {{ settings.image-flip | json }} {% else %} false {% endif %},
+    },
+  };
+</script>

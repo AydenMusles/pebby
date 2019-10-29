@@ -1,0 +1,38 @@
+{% if settings.show_multiple_currencies %}
+  <li class="currsw">
+    {% include 'currencies-switcher' %}
+  </li>
+{% endif %}
+<li class="seeks">
+  <a id="search_trigger" href="#">
+    <i class="la la-search" aria-hidden="true"></i>
+  </a>
+</li>
+{% if shop.customer_accounts_enabled %}
+  {% if customer  %}
+    <li class="cust">
+      <a href="/account">
+        <i class="la la-user" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="cust">
+      <a href="/account/logout" class="logout-link">
+        <i class="la la-user-times" aria-hidden="true"></i>
+      </a>
+    </li>
+  {% else %}
+    <li class="cust">
+      <a href="/account/login">
+        <i class="la la-user" aria-hidden="true"></i>
+      </a>
+    </li>
+  {% endif %}
+{% endif %}
+<li>
+  <a href="/cart" {% if settings.ajax_cart_method == 'drawer' %}class="site-header__cart-toggle js-drawer-open-right" aria-controls="CartDrawer" aria-expanded="false"{% endif %}>
+    <span class="cart-words"></span>
+  &nbsp;<i class="la la-shopping-cart" aria-hidden="true"></i>
+    <span class="CartCount">{{ cart.item_count }}</span>
+    &nbsp;<span class="CartCost"><span class="money">{{ cart.total_price | money }}</span></span>
+  </a>
+</li>
