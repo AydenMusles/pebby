@@ -5380,7 +5380,7 @@
           "1559067219938-1": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/IMG_0846.JPG",
+              "image": "shopify:\/\/shop_images\/IMG_0846_1512x_1cb8d89c-6b3c-4773-8f81-cdfd4de24ea2.jpeg",
               "text_align": "left",
               "caption_horizontal": 24,
               "caption_vertical": 50,
@@ -5577,26 +5577,26 @@
             "type": "image",
             "settings": {
               "image_width": "66%",
-              "image": "shopify:\/\/shop_images\/shopthelook2_1200x_12ded86f-9d71-4f78-8ab4-3c57fd37760b.jpg",
-              "lookbook_product_1": "sundance-festival-ring",
+              "image": "shopify:\/\/shop_images\/IMG_2069_2.JPG",
+              "lookbook_product_1": "heart-soul-seeker-teal-side-slit-tee",
               "hotspot_horizontal_1": 57,
-              "hotspot_vertical_1": 22,
+              "hotspot_vertical_1": 76,
               "hotspot_color_1": "#db8c5e",
-              "lookbook_product_2": "white-rapids-ring",
+              "lookbook_product_2": "hail-mary-4-piece-necklace-set",
               "hotspot_horizontal_2": 22,
-              "hotspot_vertical_2": 74,
+              "hotspot_vertical_2": 56,
               "hotspot_color_2": "#db8c5e",
-              "lookbook_product_3": "good-vibes-teal-side-slit-tee",
+              "lookbook_product_3": "spellbound-necklace-in-canyon",
               "hotspot_horizontal_3": 82,
-              "hotspot_vertical_3": 68,
+              "hotspot_vertical_3": 56,
               "hotspot_color_3": "#db8c5e",
-              "lookbook_product_4": "mesa-ridge-ring",
-              "hotspot_horizontal_4": 13,
-              "hotspot_vertical_4": 91,
+              "lookbook_product_4": "buddhas-beach-multi-bracelet-set",
+              "hotspot_horizontal_4": 81,
+              "hotspot_vertical_4": 9,
               "hotspot_color_4": "#dba071",
-              "lookbook_product_5": "bayside-puka-shell-bracelet",
-              "hotspot_horizontal_5": 66,
-              "hotspot_vertical_5": 83,
+              "lookbook_product_5": "tombstone-turquoise-stone-bracelet",
+              "hotspot_horizontal_5": 73,
+              "hotspot_vertical_5": 74,
               "hotspot_color_5": "#dba071"
             }
           },
@@ -5604,20 +5604,20 @@
             "type": "image",
             "settings": {
               "image_width": "33%",
-              "image": "shopify:\/\/shop_images\/IMG_9738.jpg",
-              "lookbook_product_1": "pebby-forevee-vintage-wolf-side-slit-tee",
+              "image": "shopify:\/\/shop_images\/IMG_2071.JPG",
+              "lookbook_product_1": "happiness-is-free-graphite-side-slit-tee",
               "hotspot_horizontal_1": 57,
               "hotspot_vertical_1": 45,
               "hotspot_color_1": "#db8c5e",
-              "lookbook_product_2": "copy-of-bayside-reef-puka-shell-bracelet",
+              "lookbook_product_2": "happiness-is-free-graphite-side-slit-tee",
               "hotspot_horizontal_2": 11,
-              "hotspot_vertical_2": 93,
+              "hotspot_vertical_2": 79,
               "hotspot_color_2": "#db8c5e",
-              "lookbook_product_3": "tombstone-turquoise-stone-bracelet",
-              "hotspot_horizontal_3": 19,
-              "hotspot_vertical_3": 85,
+              "lookbook_product_3": "taryn-necklace",
+              "hotspot_horizontal_3": 16,
+              "hotspot_vertical_3": 38,
               "hotspot_color_3": "#db8c5e",
-              "lookbook_product_4": "denali-fringe-sleeve-cardigan",
+              "lookbook_product_4": "",
               "hotspot_horizontal_4": 8,
               "hotspot_vertical_4": 55,
               "hotspot_color_4": "#db8c5e",
@@ -5630,81 +5630,54 @@
           "1559241649775-2": {
             "type": "image",
             "settings": {
-              "image_width": "33%",
-              "image": "shopify:\/\/shop_images\/IMG_9786.jpg",
-              "lookbook_product_1": "freedom-thrills-stone-side-slit-tee",
-              "hotspot_horizontal_1": 60,
-              "hotspot_vertical_1": 47,
+              "image_width": "50%",
+              "image": "shopify:\/\/shop_images\/IMG_2239.JPG",
+              "lookbook_product_1": "set-birds-free-womens-side-slit-graphic-tee",
+              "hotspot_horizontal_1": 23,
+              "hotspot_vertical_1": 35,
               "hotspot_color_1": "#db8c5e",
-              "lookbook_product_2": "waikiki-bracelet-set",
+              "lookbook_product_2": "spellbound-necklace-in-canyon",
               "hotspot_horizontal_2": 50,
-              "hotspot_vertical_2": 17,
+              "hotspot_vertical_2": 50,
               "hotspot_color_2": "#db8c5e",
-              "lookbook_product_3": "jordan-choker-necklace",
-              "hotspot_horizontal_3": 7,
-              "hotspot_vertical_3": 61,
+              "lookbook_product_3": "pippa-fringe-cardi",
+              "hotspot_horizontal_3": 55,
+              "hotspot_vertical_3": 80,
               "hotspot_color_3": "#db8c5e",
-              "lookbook_product_4": "",
-              "hotspot_horizontal_4": 21,
-              "hotspot_vertical_4": 40,
+              "lookbook_product_4": "carlen-multi-bracelet-set",
+              "hotspot_horizontal_4": 61,
+              "hotspot_vertical_4": 14,
               "hotspot_color_4": "#db8c5e",
-              "lookbook_product_5": "",
-              "hotspot_horizontal_5": 40,
-              "hotspot_vertical_5": 40,
-              "hotspot_color_5": "#000000"
+              "lookbook_product_5": "tombstone-turquoise-stone-bracelet",
+              "hotspot_horizontal_5": 77,
+              "hotspot_vertical_5": 81,
+              "hotspot_color_5": "#d29568"
             }
           },
           "1561657232664": {
             "type": "image",
             "settings": {
-              "image_width": "33%",
-              "image": "shopify:\/\/shop_images\/IMG_0583.jpg",
-              "lookbook_product_1": "live-to-ride-vintage-motorcycle-side-slit-tee",
-              "hotspot_horizontal_1": 63,
-              "hotspot_vertical_1": 51,
+              "image_width": "50%",
+              "image": "shopify:\/\/shop_images\/IMG_2684.JPG",
+              "lookbook_product_1": "death-valley-side-slit-stone-womens-graphic-tee",
+              "hotspot_horizontal_1": 35,
+              "hotspot_vertical_1": 47,
               "hotspot_color_1": "#db8c5e",
-              "lookbook_product_2": "moons-over-manhattan-necklace-in-silver",
-              "hotspot_horizontal_2": 26,
-              "hotspot_vertical_2": 57,
+              "lookbook_product_2": "mesa-open-knit-cardigan",
+              "hotspot_horizontal_2": 61,
+              "hotspot_vertical_2": 18,
               "hotspot_color_2": "#db8c5e",
-              "lookbook_product_3": "carmen-choker-necklace-gold-or-silver",
-              "hotspot_horizontal_3": 9,
-              "hotspot_vertical_3": 43,
+              "lookbook_product_3": "maria-the-hippie-bell-bottom-pant",
+              "hotspot_horizontal_3": 87,
+              "hotspot_vertical_3": 65,
               "hotspot_color_3": "#db8c5e",
-              "lookbook_product_4": "maria-the-hippie-bell-bottom-pant",
-              "hotspot_horizontal_4": 80,
-              "hotspot_vertical_4": 8,
+              "lookbook_product_4": "light-as-a-feather-turquoise-stone-bracelet",
+              "hotspot_horizontal_4": 24,
+              "hotspot_vertical_4": 85,
               "hotspot_color_4": "#db8c5e",
               "lookbook_product_5": "",
               "hotspot_horizontal_5": 9,
               "hotspot_vertical_5": 72,
-              "hotspot_color_5": "#db8c5e"
-            }
-          },
-          "1559241649775-1": {
-            "type": "image",
-            "settings": {
-              "image_width": "33%",
-              "image": "shopify:\/\/shop_images\/Facetune_12-09-2019-15-12-32_1200x_c780ebd2-6ac4-4a7f-a36d-eb45303ec89b.jpg",
-              "lookbook_product_1": "reset-refine-reflect-stone-side-slit-womens-graphic-tee",
-              "hotspot_horizontal_1": 14,
-              "hotspot_vertical_1": 55,
-              "hotspot_color_1": "#db8c5e",
-              "lookbook_product_2": "",
-              "hotspot_horizontal_2": 75,
-              "hotspot_vertical_2": 83,
-              "hotspot_color_2": "#db8c5e",
-              "lookbook_product_3": "sahara-earring",
-              "hotspot_horizontal_3": 2,
-              "hotspot_vertical_3": 33,
-              "hotspot_color_3": "#db8c5e",
-              "lookbook_product_4": "drifter-turqoise-ring",
-              "hotspot_horizontal_4": 28,
-              "hotspot_vertical_4": 80,
-              "hotspot_color_4": "#db8c5e",
-              "lookbook_product_5": "",
-              "hotspot_horizontal_5": 62,
-              "hotspot_vertical_5": 49,
               "hotspot_color_5": "#db8c5e"
             }
           }
@@ -5713,8 +5686,7 @@
           "1559241649775-0",
           "1559329188875",
           "1559241649775-2",
-          "1561657232664",
-          "1559241649775-1"
+          "1561657232664"
         ],
         "settings": {
           "full_width": true,
@@ -5727,7 +5699,7 @@
           "1561574067213-1": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Facetune_12-09-2019-14-27-12.jpg",
+              "image": "shopify:\/\/shop_images\/IMG_2687.JPG",
               "image_width": "33%",
               "link": "shopify:\/\/collections\/side-slit-tees",
               "heading": "BEST-SELLERS",
@@ -5761,7 +5733,7 @@
           "1561574067213-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/IMG_0580.jpg",
+              "image": "shopify:\/\/shop_images\/IMG_6148.jpg",
               "image_width": "33%",
               "link": "shopify:\/\/collections\/boutique-items",
               "heading": "NEWLY ADDED",
@@ -5778,8 +5750,8 @@
         },
         "block_order": [
           "1561574067213-1",
-          "1561574067213-2",
-          "1561574067213-0"
+          "1561574067213-0",
+          "1561574067213-2"
         ],
         "settings": {
           "full_width": false,
@@ -5788,27 +5760,6 @@
           "promo_heading_weight": "bold",
           "promo_heading_size": 30,
           "promo_button_size": 14
-        }
-      },
-      "1561574293261": {
-        "type": "parallax-image",
-        "settings": {
-          "image": "shopify:\/\/shop_images\/FALL25_c72fa4ca-6f47-417f-80b0-3f814669d35a.jpg",
-          "background_effect": "fixed",
-          "page_height": 400,
-          "heading": "",
-          "heading_font_size": 26,
-          "heading_font_weight": "700",
-          "heading_color": "#554237",
-          "subheading": "",
-          "subheading_font_size": 16,
-          "subheading_font_weight": "400",
-          "subheading_color": "rgba(0,0,0,0)",
-          "button_text": "",
-          "button_weight": "light",
-          "button_link": "shopify:\/\/collections\/best-selling-tees",
-          "button_text_color": "rgba(0,0,0,0)",
-          "button_color": "rgba(0,0,0,0)"
         }
       },
       "1561574432974": {
@@ -5888,13 +5839,138 @@
           "promo_heading_size": 24,
           "promo_button_size": 14
         }
+      },
+      "1571769769830": {
+        "type": "parallax-image",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/IMG_2238.JPG",
+          "background_effect": "fixed",
+          "page_height": 800,
+          "heading": "",
+          "heading_font_size": 33,
+          "heading_font_weight": "400",
+          "heading_color": "#f8f3f0",
+          "subheading": "Complete your look head to toe \nwith perfect accessories in effortless fashion.",
+          "subheading_font_size": 34,
+          "subheading_font_weight": "700",
+          "subheading_color": "#ffffff",
+          "button_text": "Add a button",
+          "button_weight": "light",
+          "button_link": "",
+          "button_text_color": "#fff",
+          "button_color": "#000"
+        }
+      },
+      "1571770183802": {
+        "type": "gallery",
+        "blocks": {
+          "1571770183802-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/flip.jpg",
+              "image_width": "100%",
+              "link": "shopify:\/\/collections\/boutique-items",
+              "heading": "SHOP THE LOOK",
+              "button": "",
+              "heading_color": "#ffffff",
+              "button_color": "#ffffff",
+              "button_background": "#000",
+              "text_options": "on_image",
+              "vertical_position": 6,
+              "horizontal_position": 36,
+              "align_text": "left"
+            }
+          }
+        },
+        "block_order": [
+          "1571770183802-0"
+        ],
+        "settings": {
+          "full_width": true,
+          "heading": "",
+          "promo_background_color": "rgba(0,0,0,0)",
+          "promo_heading_weight": "light",
+          "promo_heading_size": 24,
+          "promo_button_size": 14
+        }
+      },
+      "1571770575597": {
+        "type": "gallery",
+        "blocks": {
+          "1571770575597-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/IMG_2081.JPG",
+              "image_width": "33%",
+              "link": "shopify:\/\/collections\/rings",
+              "heading": "Our Rings",
+              "button": "Explore",
+              "heading_color": "#ffffff",
+              "button_color": "#ffffff",
+              "button_background": "#000",
+              "text_options": "on_image",
+              "vertical_position": 12,
+              "horizontal_position": 14,
+              "align_text": "left"
+            }
+          },
+          "1571770575597-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/IMG_2079.JPG",
+              "image_width": "33%",
+              "link": "shopify:\/\/collections\/earrings",
+              "heading": "Our Earrings",
+              "button": "Explore",
+              "heading_color": "#ffffff",
+              "button_color": "#ffffff",
+              "button_background": "#000",
+              "text_options": "on_image",
+              "vertical_position": 12,
+              "horizontal_position": 14,
+              "align_text": "left"
+            }
+          },
+          "1571770986125": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/IMG_2077.JPG",
+              "image_width": "33%",
+              "link": "shopify:\/\/collections\/necklaces",
+              "heading": "Our Necklaces",
+              "button": "Explore",
+              "heading_color": "#ffffff",
+              "button_color": "#ffffff",
+              "button_background": "#000000",
+              "text_options": "on_image",
+              "vertical_position": 12,
+              "horizontal_position": 14,
+              "align_text": "left"
+            }
+          }
+        },
+        "block_order": [
+          "1571770575597-0",
+          "1571770575597-1",
+          "1571770986125"
+        ],
+        "settings": {
+          "full_width": false,
+          "heading": "Shop Jewelry",
+          "promo_background_color": "#fff",
+          "promo_heading_weight": "light",
+          "promo_heading_size": 24,
+          "promo_button_size": 14
+        }
       }
     },
     "content_for_index": [
       "1559067219938",
       "1561574067213",
-      "1561574293261",
       "1559241649775",
+      "1571769769830",
+      "1571770575597",
+      "1571770183802",
       "1559084715445",
       "1569546873548",
       "1561574432974",

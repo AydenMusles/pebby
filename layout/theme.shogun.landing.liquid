@@ -10,7 +10,7 @@ This file can be re-written at any time.
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en" class="no-js"> <!--<![endif]-->
 
 <head>
-
+  
 
   <meta charset="utf-8" />
 
@@ -44,9 +44,9 @@ This file can be re-written at any time.
   {% include 'currencies' %}
   {% endif %}
 
-  {{ 'theme.js' | asset_url | script_tag }}
-  {{ 'option_selection.js' | shopify_asset_url | script_tag }}
-  {{ 'instafeed.js' | asset_url | script_tag }}
+  <script src="{{ 'theme.js' | asset_url }}" defer></script>
+  <script src="{{ 'option_selection.js' | shopify_asset_url }}" defer></script>
+  <script src="{{ 'instafeed.js' | asset_url }}" defer></script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -65,9 +65,7 @@ This file can be re-written at any time.
 
   {% include 'shogun-head' %}
   {% include 'judgeme_core' %}
-  <!--begin-bc-sf-filter-css-->
-  {% include 'bc-sf-filter-style' %}
-  <!--end-bc-sf-filter-css-->
+
 
   <!-- GetMore includes - styles and scripts -->
   <!-- /snippets/gm-includes.liquid -->
@@ -79,14 +77,13 @@ This file can be re-written at any time.
 
 
 <body class="gridlock shifter-left {{ template }}">
-
-
+  {{ 'bold-upsell.css' | asset_url | stylesheet_tag }}
+{{ 'bold-upsell-custom.css' | asset_url | stylesheet_tag }}
+  
   {{ content_for_layout }}
   {{ "api.jquery.js" | shopify_asset_url | script_tag | json }}
-  <script src="https://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js?4368" defer></script>
-{{ 'jquery.products.min.js' | asset_url | script_tag }}
 {{ 'handlebars.min.js' | asset_url | script_tag }}
-{{ 'ajax-cart.js' | asset_url | script_tag }}
+{{ 'ajax-cart.min.js' | asset_url | script_tag }}
 {{ 'ls.rias.min.js' | asset_url | script_tag }}
 {{ 'ls.bgset.min.js' | asset_url | script_tag }}
 {{ 'lazysizes.min.js' | asset_url | script_tag }}
@@ -100,13 +97,17 @@ This file can be re-written at any time.
     }
     //]]>
   </script>
-<script>(function(d, s, id) {
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js?4368" defer></script>
+<script src="{{ 'jquery.products.min.js' | asset_url }}" defer></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=127142210767229";
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+}(document, 'script', 'facebook-jssdk'))});</script>
 <script>
     jQuery(function($) {
       ajaxCart.init({
